@@ -1,0 +1,43 @@
+# Create an empty dictionary to store daily calorie data
+calorie_data = {}
+
+def add_calories():
+    date = input("Enter the date (YYYY-MM-DD): ")
+    calories = int(input("Enter the number of calories consumed: "))
+    
+    if date in calorie_data:
+        calorie_data[date] += calories
+    else:
+        calorie_data[date] = calories
+
+def view_calories():
+    date = input("Enter the date (YYYY-MM-DD) to view calories: ")
+    
+    if date in calorie_data:
+        print(f"Calories consumed on {date}: {calorie_data[date]}")
+    else:
+        print(f"No data found for {date}")
+
+def calculate_total_calories():
+    total_calories = sum(calorie_data.values())
+    print(f"Total calories consumed: {total_calories}")
+
+while True:
+    print("\nCalorie Tracker Menu:")
+    print("1. Add Calories")
+    print("2. View Calories for a Date")
+    print("3. Calculate Total Calories")
+    print("4. Exit")
+
+    choice = input("Enter your choice: ")
+
+    if choice == '1':
+        add_calories()
+    elif choice == '2':
+        view_calories()
+    elif choice == '3':
+        calculate_total_calories()
+    elif choice == '4':
+        break
+    else:
+        print("Invalid choice. Please choose a valid option.")
